@@ -1,0 +1,12 @@
+body{
+    background-image: url(../img/alexey-starki-91ykdj2WQeg-unsplash.jpg);
+    background-size: 100vw;
+    background-repeat: no-repeat;
+}
+
+table{
+    text-align: center;
+    background-color: rgba(240, 255, 255, 0.402);
+    margin-top:25px;
+    
+}
