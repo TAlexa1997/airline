@@ -206,4 +206,5 @@ class AirlineFactory extends Factory
             'szabad_hely'=> fake()->numberBetween(1, 100),
         ];
     }
-}
+
+    }
