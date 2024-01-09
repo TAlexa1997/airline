@@ -1,20 +1,26 @@
-import { adatLeiro } from "../adatLeiro.js";
-export default class UrlapView{
-    constructor(szuloElem ){
-        this.szuloElem=szuloElem
-        //létrehozok egy form taget a szulőelemben
-        //létrehozok egy kapaszkodót formelemhez this.formElem
-        this.htmlOsszerak()
-    }
-    htmlOsszerak(){
-       /*  végigmegyek az adatLeiro kulcain és létrehozom az egyes 
-        beviteli mezőket
-         <div class="mb-3 mt-3">
-            <label for="text" class="form-label">fdgdf</label>
-            <input type="text" class="form-control" id="fds" placeholder="Enter email" name="email">
-        </div>
-        
-        */
+import LabelView from "./LabelView.js";
 
-    }
+export default class UrlapView {
+  #list = [];
+  constructor(list, szuloElem) {
+    this.#list = list;
+    console.log(this.#list);
+    szuloElem.append("<form class='urlap'><fieldset disabled><legend>Ürlap</legend></fieldset></form>");
+    this.formElem = szuloElem.find("form");
+    this.sorMegjelenit();
+    szuloElem.append("<button type='submit' class='btn btn-primary'>Küldés</button>");
+  }
+
+  sorMegjelenit() {
+    const labelView = new LabelView({
+        nev: this.#list[0].nev,
+        country: this.#list[0].country,
+        from_country: this.#list[0].from_country,
+        ind_datum: this.#list[0].ind_datum,
+        erk_datum: this.#list[0].erk_datum,
+        szabad_hely: this.#list[0].szabad_hely
+    }, this.formElem);
 }
+}
+
+

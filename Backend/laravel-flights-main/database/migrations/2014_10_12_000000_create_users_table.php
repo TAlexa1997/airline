@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password'); //admin:0 ; felhasználó:1
+            $table->boolean('permission')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
@@ -29,4 +30,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('users');
     }
+
+    
 };

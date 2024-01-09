@@ -10,13 +10,23 @@ export default class DataService {
         // handle success
         console.log(response);
         console.log(response.data);
-        console.log(response.data.irok);
+        
         callback(response.data);
       })
       .catch(function (error) {
         console.log(error);
       })
       .finally(function () {
+      });
+  }
+
+  submitForm() {
+    axios.post('/api/submit', this.formModel)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error('Hiba történt az adatküldés során:', error);
       });
   }
 
@@ -24,18 +34,16 @@ export default class DataService {
 
   putData() {}
 
-  deleteData(vegpont,id,hibaCallback) {
+  deleteData(vegpont, id, callback, hibaCallback) {
     axios
-      .delete(vegpont+"/"+id)
+      .delete(vegpont + "/" + id)
       .then(function (response) {
         callback(response.data);
       })
       .catch(function (error) {
-        hibaCallback(error)
+        hibaCallback(error);
         console.log(error);
-      })
-      .finally(function () {
-        // always executed
       });
   }
+
 }

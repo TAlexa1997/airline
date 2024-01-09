@@ -1,7 +1,7 @@
-
-import Controller from "./Controller/Controller.js";
-// import Controller from "./public/Controller/Controller.js";
+import Controller from "./Controller/Controller.js"
+import UrlapController from "./Controller/UrlapController.js";
 
 $(function(){
-    new Controller()
+    new Controller();
+    new UrlapController();
 })

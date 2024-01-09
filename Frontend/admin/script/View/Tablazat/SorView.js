@@ -27,12 +27,11 @@ export default class SorView {
   htmlOsszerak() {
     let txt = "<tr>";
     for (const key in this.#obj) {
-      txt += `<td>${this.#obj[key]}</td>`;
-    }
+          txt += `<td>${this.#obj[key]}</td>`;
+        }  
     txt += "<td><button class='szerkesztes'> Szerkesztés </button></td>";
     txt += "<td><button class='torles'> Törlés </button></td>";
     txt += "</tr>";
-    console.log(txt);
     this.szuloElem.append(txt);
   }
 }

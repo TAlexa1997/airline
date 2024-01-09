@@ -6,10 +6,11 @@ export default class  Controller{
         this.dataService=new DataService()
 
         this.dataService.getData("airlines", this.megjelenit)
-        $(window).on("sorTorles",(e)=>{
-            console.log(e.detail)
-            this.dataService.deleteData("adatok.json", e.detail,this.hibaCallback)
-        })
+        $(window).on("sorTorles", (e) => {
+            console.log(e.detail);
+            this.dataService.deleteData("adatok.json", e.detail, this.megjelenit, this.hibaCallback);
+        });
+        
 
     }
 
