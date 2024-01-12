@@ -1,25 +1,36 @@
+import { adatLeiro } from "../adatLeiro.js";
 import LabelView from "./LabelView.js";
 
 export default class UrlapView {
   #list = [];
+  // #inputElemObjektumokLista = {};
+    #formAdat = {};
   constructor(list, szuloElem) {
     this.#list = list;
     console.log(this.#list);
     szuloElem.append("<form class='urlap'><fieldset disabled><legend>Ürlap</legend></fieldset></form>");
     this.formElem = szuloElem.find("form");
-    this.sorMegjelenit();
-    szuloElem.append("<button type='submit' class='btn btn-primary'>Küldés</button>");
+     this.sorMegjelenit();
+    //  this.submitElem.on("click", (event) => {
+    //     event.preventDefault();
+    //     this.#inputElemObjektumokLista.forEach((elem) => {
+    //       console.log(elem)
+    //       console.log(elem.key)
+    //       this.#formAdat[elem.key]=elem.getValue()
+    //     });
+    //     this.trigger("ujAdatHozzaAdasa");
+    //     this.trigger("torol");
+    //   });
+    szuloElem.append('<div class="col-md-12 text-center"><button type="submit" id="button" class="btn btn-primary">Küldés</button></div>');
   }
 
   sorMegjelenit() {
-    const labelView = new LabelView({
-        nev: this.#list[0].nev,
-        country: this.#list[0].country,
-        from_country: this.#list[0].from_country,
-        ind_datum: this.#list[0].ind_datum,
-        erk_datum: this.#list[0].erk_datum,
-        szabad_hely: this.#list[0].szabad_hely
-    }, this.formElem);
+    const labelView = new LabelView(adatLeiro, this.formElem);
+}
+
+trigger(esemenyNev) {
+  const e = new CustomEvent(esemenyNev, { detail: this.#formAdat });
+  window.dispatchEvent(e);
 }
 }
 

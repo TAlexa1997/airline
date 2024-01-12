@@ -21,6 +21,7 @@ export default class DataService {
   }
 
   submitForm() {
+    this.formModel = formModel;
     axios.post('/api/submit', this.formModel)
       .then(response => {
         console.log(response.data);
@@ -30,9 +31,27 @@ export default class DataService {
       });
   }
 
-  postData() {}
+  postData(data, callback) {
+    axios.post('/api/saveData', data)
+      .then(response => {
+        console.log(response.data);
+        callback(response.data); 
+      })
+      .catch(error => {
+        console.error('Hiba történt az adatküldés során:', error);
+      });
+  }
 
-  putData() {}
+  putData(data, callback) {
+    axios.put('/api/saveData', data)
+      .then(response => {
+        console.log(response.data);
+        callback(response.data); 
+      })
+      .catch(error => {
+        console.error('Hiba történt az adatküldés során:', error);
+      });
+  }
 
   deleteData(vegpont, id, callback, hibaCallback) {
     axios
