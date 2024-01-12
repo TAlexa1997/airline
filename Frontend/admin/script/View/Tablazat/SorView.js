@@ -4,6 +4,7 @@ export default class SorView {
     this.#obj = obj;
     this.index = index;
     this.szuloElem = szuloElem;
+    this.id = this.#obj.id;
     this.htmlOsszerak();
     //megfogjuk a törlés gombot
     this.torlesElem = this.szuloElem.find(".torles:last");
@@ -14,14 +15,16 @@ export default class SorView {
       this.trigger("sorTorles");
     });
     this.szerkesztElem.on("click", () => {
-      this.trigger("sorSzerkeszt");
+      this.trigger("sorSzerkeszt", this.#obj);
     });
+    
   }
 
-  trigger(e) {
-    const esemenyem = new CustomEvent(e, { detail: this.index });
+  trigger(e, adatok) {
+    const esemenyem = new CustomEvent(e, { detail: { index: this.index, adatok: adatok } });
     window.dispatchEvent(esemenyem);
   }
+  
 
   htmlOsszerak() {
     let txt = "<tr>";
@@ -34,4 +37,7 @@ export default class SorView {
     txt += "</tr>";
     this.szuloElem.append(txt);
   }
+
+  
+
 }

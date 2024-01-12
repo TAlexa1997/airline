@@ -22,6 +22,8 @@ export default class Controller {
   this.dataService.setSzerkesztendoElem(szerkesztendoElem);
     });
   }
+  
+
 
   hibaCallback() {
     console.log(err);
@@ -33,4 +35,4 @@ export default class Controller {
     //példányosítjuk a view-t Táblázatot
     new TablaView(list, $(".adatok"));
   }
-}
+};

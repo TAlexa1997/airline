@@ -7,7 +7,6 @@ export default class DataService {
     axios 
       .get(vegpont)
       .then(function (response) {
-        // handle success
         console.log(response);
         console.log(response.data);
         
@@ -31,26 +30,32 @@ export default class DataService {
       });
   }
 
-  postData(data, callback) {
-    axios.post('/api/saveData', data)
-      .then(response => {
-        console.log(response.data);
-        callback(response.data); 
+  postData(data, callback,vegpont) {
+    console.log(vegpont, JSON.stringify(data));
+    axios
+      .post(vegpont, data)
+      .then(function (response) {
+        //response data --> backenden írtuk
+        callback(response.data);
       })
-      .catch(error => {
-        console.error('Hiba történt az adatküldés során:', error);
-      });
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {});
   }
 
-  putData(data, callback) {
-    axios.put('/api/saveData', data)
-      .then(response => {
-        console.log(response.data);
-        callback(response.data); 
+  putData(data, vegpont,callback,id) {
+    let tvegpont = vegpont + "/" + parseInt(id);
+    axios
+      .put(tvegpont, data)
+      .then(function (response) {
+        //response data --> backenden írtuk
+        callback(response.data);
       })
-      .catch(error => {
-        console.error('Hiba történt az adatküldés során:', error);
-      });
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {});
   }
 
   deleteData(vegpont, id, callback, hibaCallback) {
@@ -62,6 +67,8 @@ export default class DataService {
       .catch(function (error) {
         hibaCallback(error);
         console.log(error);
+      })
+      .finally(function () {
       });
   }
 

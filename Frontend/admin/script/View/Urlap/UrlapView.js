@@ -3,7 +3,6 @@ import LabelView from "./LabelView.js";
 
 export default class UrlapView {
   #list = [];
-  // #inputElemObjektumokLista = {};
     #formAdat = {};
   constructor(list, szuloElem) {
     this.#list = list;
@@ -25,7 +24,12 @@ export default class UrlapView {
   }
 
   sorMegjelenit() {
-    const labelView = new LabelView(adatLeiro, this.formElem);
+    
+    if (!adatLeiro) {
+      console.error("adatLeiro nincs definiálva");
+      return;
+      const labelView = new LabelView(adatLeiro, this.formElem);
+  }
 }
 
 trigger(esemenyNev) {

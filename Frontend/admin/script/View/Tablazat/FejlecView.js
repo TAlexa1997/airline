@@ -14,3 +14,5 @@ export default class FejlecView {
     this.szuloElem.append(txt)
   }
 }
+
+
