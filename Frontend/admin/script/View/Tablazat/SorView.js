@@ -20,8 +20,8 @@ export default class SorView {
     
   }
 
-  trigger(e, adatok) {
-    const esemenyem = new CustomEvent(e, { detail: { index: this.index, adatok: adatok } });
+  trigger(e) {
+    const esemenyem = new CustomEvent(e, { detail: { index: this.index} });
     window.dispatchEvent(esemenyem);
   }
   
@@ -29,7 +29,6 @@ export default class SorView {
   htmlOsszerak() {
     let txt = "<tr>";
     for (const key in this.#obj) {
-      console.log(this.#obj[key]);
       txt += `<td>${this.#obj[key]}</td>`;
     }
     txt += "<td><button class='szerkesztes'> Szerkesztés </button></td>";
