@@ -19,10 +19,12 @@ export default class SorView {
     });
     
     this.szerkesztElem.on("click", () => {
-      this.trigger("sorSzerkeszt", this.#obj);
+      const szerkesztendoElem = this.#obj;
+      this.trigger("sorSzerkeszt", szerkesztendoElem);
     });
     
   }
+  
 
   
   trigger(e) {

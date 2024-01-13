@@ -18,9 +18,40 @@
     <link rel="stylesheet" href="../style/public.css" />
     <link rel="stylesheet" href="../style/style.css" />
     <title>Tóth Alexandra</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <style>
+      .swiper-container {
+        width: 100%;
+        padding-top: 90px;
+        padding-bottom: 10px;
+      }
+
+      .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 500px;
+        height: 500px;
+      }
+
+      .swiper-slide .number {
+        position: absolute;
+        color:black;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        opacity: 0.5;
+        text-shadow: 4px 4px 4px rgba(232, 222, 222, 0.5),
+          -5px 0px 4px rgb(255, 255, 255, 0.5);
+        font-size: 100px;
+        font-weight: 900;
+      }
+    </style>
     <script type="module" src="../public/script/main.js"></script>
   </head>
-  <body>
+  <body class="slider">
     <button class="button">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -41,21 +72,73 @@
         <a href="../admin/bejelentkezes.html">Bejelentkezés</a>
       </div>
     </button>
-    <main class="container">
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">
-                With supporting text below as a natural lead-in to additional
-                content.
-              </p>
-              <a href="#" class="btn btn-primary">Foglalás</a>
+    <main style="width: 100vw">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div
+            class="swiper-slide" style="background-image: url(../img/utazas/dino-reichmuth-A5rCN8626Ck-unsplash.jpg);">
+            <div class="number">01</div>
+          </div>
+          <div class="swiper-slide"style="background-image: url(../img/utazas/drif-riadh-YpkuRn54y4w-unsplash.jpg);">
+            <div class="number">USA</div>
+          </div>
+          <div class="swiper-slide"style="background-image: url(../img/utazas/felix-rostig-UmV2wr-Vbq8-unsplash.jpg);">
+            <div class="number">03</div>
+          </div>
+          <div class="swiper-slide"style="background-image: url(../img/utazas/jack-anstey-XVoyX7l9ocY-unsplash.jpg);">
+            <div class="number">Skócia</div>
+          </div>
+          <div class="swiper-slide"style="background-image: url(../img/utazas/mesut-kaya-eOcyhe5-9sQ-unsplash.jpg);">
+            <div class="number">Turkey</div>
+          </div>
+          <div class="swiper-slide"style="background-image: url(../img/utazas/neom-bhKqZNZeAR0-unsplash.jpg);">
+            <div class="number">06</div>
+          </div>
+          <div class="swiper-slide"style="background-image: url(../img/utazas/neom-yg6v0KoiIcU-unsplash.jpg);">
+            <div class="number">07</div>
+          </div>
+          <div class="swiper-slide"style="background-image: url(../img/utazas/pietro-de-grandi-T7K4aEPoGGk-unsplash.jpg);">
+            <div class="number">08</div>
+          </div>
+          <div class="swiper-slide"style="background-image: url(../img/utazas/stefan-stefancik-0wMmxNB6Xzc-unsplash.jpg);">
+            <div class="number">09</div>
+          </div>
+          <div class="swiper-slide"style="background-image: url(../img/utazas/zq-lee-VbDjv8-8ibc-unsplash.jpg);">
+            <div class="number">Dubai</div>
+          </div>
+          
+              </div>
             </div>
           </div>
         </div>
+        <div class="swiper-pagination"></div>
       </div>
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+      <script>
+        var swiper = new Swiper(".swiper-container", {
+          effect: "coverflow",
+          grabCursor: true,
+          centeredSlides: true,
+          slidesPerView: "auto",
+          spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,},
+          coverflowEffect: {
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+          },
+
+          loop:true,
+        });
+      </script>
     </main>
   </body>
 </html>

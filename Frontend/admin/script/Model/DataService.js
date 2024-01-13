@@ -4,13 +4,13 @@ export default class DataService {
     axios.defaults.baseURL="http://127.0.0.1:8000/api/"
   }
   getData(vegpont, callback) {
-    axios 
-      .get(vegpont)
+    axios
+      .get(vegpont) 
       .then(function (response) {
         console.log(response);
-        console.log(response.data);
-        
-        callback(response.data);
+        if (callback && typeof callback === 'function') {
+          callback(response.data); 
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -35,7 +35,6 @@ export default class DataService {
     axios
       .post(vegpont, data)
       .then(function (response) {
-        //response data --> backenden írtuk
         callback(response.data);
       })
       .catch(function (error) {
@@ -49,7 +48,7 @@ export default class DataService {
     axios
       .put(tvegpont, data)
       .then(function (response) {
-        //response data --> backenden írtuk
+
         callback(response.data);
       })
       .catch(function (error) {

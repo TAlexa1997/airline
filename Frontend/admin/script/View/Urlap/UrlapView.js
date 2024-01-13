@@ -16,16 +16,17 @@ export default class UrlapView {
     szuloElem.append("<form class='urlap'><fieldset disabled><legend>Ürlap</legend></fieldset></form>");
     this.formElem = szuloElem.find("form");
      this.sorMegjelenit();
-     this.submitElem.on("click", (event) => {
-        event.preventDefault();
-        this.#inputElemObjektumokLista.forEach((elem) => {
-          console.log(elem)
-          console.log(elem.key)
-          this.#formAdat[elem.key]=elem.getValue()
-        });
-        this.trigger("ujAdatHozzaAdasa");
-        this.trigger("torol");
-      });
+     $('#myForm').on('submit', (e) => {
+      e.preventDefault();
+      const updatedData = {
+        id: $('#input-id').value,
+        name: $('#input-name').value,
+        // ... többi mező ...
+      };
+      this.dataService.putData(updatedData, "airlines", (response) => {
+        console.log('Adat frissítve:', response);
+      }, updatedData.id);
+    });
     szuloElem.append('<div class="col-md-12 text-center"><button type="submit" id="button" class="btn btn-primary">Küldés</button></div>');
   }
 

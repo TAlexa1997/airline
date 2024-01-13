@@ -16,11 +16,11 @@ export default class InputView {
     htmlOsszerak() {
       let urlap = "<div class='divek'>";
       for (const key in adatLeiras) {
-          if (key !== "id") {
+          
               const leiras = adatLeiras[key];
               urlap += `<label for="${key}" class="form-label">${leiras.megjelenes}</label>`;
               urlap += `<input type="${leiras.tipus}" id="${key}" class="form-control" placeholder="${leiras.megjelenes}"></input>`;
-          }
+          
       }
       urlap += "</div>";
       this.szuloElem.append(urlap);
@@ -52,5 +52,9 @@ export default class InputView {
         this.trigger("postSubmit");
       }
     });
+  }
+  trigger(esemenyNev) {
+    const e = new CustomEvent(esemenyNev, { detail: this.#obj });
+    window.dispatchEvent(e);
   }
   }
