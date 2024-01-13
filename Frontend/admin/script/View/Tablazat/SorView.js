@@ -11,12 +11,10 @@ export default class SorView {
     this.torlesElem = this.szuloElem.find(".torles:last");
     this.szerkesztElem = this.szuloElem.find(".szerkesztes:last");
     console.log(this.torlesElem);
-    this.torlesElem.on("click", () => {
-      if (window.confirm("Biztosan törölni szeretnéd ezt a sort?")) {
-        console.log("törlés");
-        this.trigger("sorTorles");
-      }
+    $(".torles").click(function() {
+      $(this).closest("tr").remove();
     });
+    ;
     
     this.szerkesztElem.on("click", () => {
       const szerkesztendoElem = this.#obj;

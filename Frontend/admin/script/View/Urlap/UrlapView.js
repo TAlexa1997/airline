@@ -19,9 +19,13 @@ export default class UrlapView {
      $('#myForm').on('submit', (e) => {
       e.preventDefault();
       const updatedData = {
-        id: $('#input-id').value,
-        name: $('#input-name').value,
-        // ... többi mező ...
+        id: $('#id').value,
+        name: $('#name').value,
+        country_from:('#country_from').value,
+        country:('#country').value,
+        ind_datum:('#ind_datum').value,
+        erk_datum:('#erk_datum').value, 
+        szabad_hely:('#szabad_hely').value,
       };
       this.dataService.putData(updatedData, "airlines", (response) => {
         console.log('Adat frissítve:', response);
