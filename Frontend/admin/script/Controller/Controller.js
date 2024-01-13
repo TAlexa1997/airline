@@ -20,15 +20,24 @@ export default class Controller {
   }
 
   setSzerkesztendoElem(elem) {
-    this.szerkesztendoElem = elem;
-    document.getElementById('id').value = elem.id || ''; 
-    document.getElementById('name').value = elem.name || ''; 
-    document.getElementById('country_from').value = elem.from_country || ''; 
-    document.getElementById('country').value = elem.country || ''; 
-    document.getElementById('ind_datum').value = elem.ind_datum || ''; 
-    document.getElementById('erk_datum').value = elem.erk_datum || ''; 
-    document.getElementById('szabad_hely').value = elem.szabad_hely || ''; 
-  }
+    this.szerkesztendoElem = elem;      
+      const setValue = (id, value) => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.value = value;
+        } else {
+          console.warn(`Element not found: ${id}`);
+        }
+      };
+      
+      setValue('id', elem.id || '');
+      setValue('name', elem.name || '');
+  setValue('from_country', elem.from_country || '');
+  setValue('country', elem.country || '');
+  setValue('ind_datum', elem.ind_datum || '');
+  setValue('erk_datum', elem.erk_datum || '');
+  setValue('szabad_hely', elem.szabad_hely || '');
+    }
   
 
   hibaCallback(err) {

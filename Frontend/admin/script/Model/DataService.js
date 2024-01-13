@@ -1,6 +1,6 @@
 export default class DataService {
   constructor() {
-    console.log("DataServise");
+    console.log("DataService");
     axios.defaults.baseURL="http://127.0.0.1:8000/api/"
   }
   getData(vegpont, callback) {
@@ -43,19 +43,15 @@ export default class DataService {
       .finally(function () {});
   }
 
-  putData(data, vegpont,callback,id) {
-    let tvegpont = vegpont + "/" + parseInt(id);
-    axios
-      .put(tvegpont, data)
-      .then(function (response) {
-
-        callback(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-      .finally(function () {});
-  }
+  
+    // putData(adatok, callback, vegpont) {
+    //   axios.put(`api/${vegpont}`, adatok)
+    //     .then(response => {
+    //       if (callback) callback(response.data);
+    //     })
+    //     .catch(error => console.error(error));
+    // }
+  
 
   deleteData(vegpont, id, callback) {
     axios

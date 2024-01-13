@@ -5,7 +5,6 @@ import SorView from "../Tablazat/SorView.js";
 
 export default class UrlapView {
   #list = [];
-  #inputElemObjektumokLista = {};
     #formAdat = {};
   constructor(list, szuloElem) {
     this.#list = list;
@@ -26,6 +25,7 @@ export default class UrlapView {
         ind_datum:('#ind_datum').value,
         erk_datum:('#erk_datum').value, 
         szabad_hely:('#szabad_hely').value,
+
       };
       this.dataService.putData(updatedData, "airlines", (response) => {
         console.log('Adat frissítve:', response);

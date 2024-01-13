@@ -20,10 +20,17 @@ export default class TablaView{
     }
 
     sorMegjelenit(){
-        
         this.#list.forEach((elem,index)=>{
             new SorView(index, elem, this.tbodyElem);
-        })
-    }
 
+        })
+        
+    }
+    // frissit(ujLista) {
+    //     this.#list = ujLista;
+    //     this.tbodyElem.empty();
+    //     this.sorMegjelenit();  
+    //   }
+
+    
 }

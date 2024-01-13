@@ -14,9 +14,14 @@ class Flight extends Model
     // protected $primaryKey = 'flight_id';
     protected $fillable = [
         'date',
-        'airline_id',
         'limit',
     ];
+
+    
+public function airlines() {
+    return $this->belongsTo('App\Airline', 'airline_id');
+}
+
 
     public function travel(): HasMany // works
     {

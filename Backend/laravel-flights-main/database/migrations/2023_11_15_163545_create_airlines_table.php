@@ -31,5 +31,18 @@ return new class extends Migration
         Schema::dropIfExists('airlines');
     }
 
+    public function destroy($id)
+{
+    $airline = Airline::find($id);
+
+    if (!$airline) {
+        return response()->json(['message' => 'A keresett légitársaság nem található.'], 404);
+    }
+
+    $airline->delete();
+
+    return response()->json(['message' => 'A légitársaság sikeresen törölve lett.']);
+}
+
     
 };

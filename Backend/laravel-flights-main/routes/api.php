@@ -20,5 +20,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::resource('airlines', App\Http\Controllers\AirlineController::class);
-Route::resource('flights', App\Http\Controllers\FlightController::class);
-Route::resource('travel', App\Http\Controllers\TravelController::class);

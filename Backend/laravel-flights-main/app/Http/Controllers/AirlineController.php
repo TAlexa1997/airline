@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Airline;
+use App\Models\Flight;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class AirlineController extends Controller
 {
@@ -61,10 +64,18 @@ class AirlineController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy($id)
-    {
-
+{
+    try {
+        DB::beginTransaction();
+        Flight::where('airline_id', $id)->delete();
         $airline = Airline::findOrFail($id);
         $airline->delete();
+        DB::commit();
         return response()->json(['message' => 'Légitársaság sikeresen törölve']);
+    } catch (\Exception $e) {
+        DB::rollback();
+        return response()->json(['message' => 'Hiba történt a törlés során'], 500);
     }
+}
+
 }
