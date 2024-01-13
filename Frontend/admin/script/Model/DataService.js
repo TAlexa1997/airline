@@ -58,18 +58,18 @@ export default class DataService {
       .finally(function () {});
   }
 
-  deleteData(vegpont, id, callback, hibaCallback) {
+  deleteData(vegpont, id, callback) {
     axios
-      .delete(vegpont + "/" + id)
+      .delete(`${vegpont}/${id}`) 
       .then(function (response) {
         callback(response.data);
       })
       .catch(function (error) {
-        hibaCallback(error);
-        console.log(error);
-      })
+        console.error('Törlési kérés hibája:', error.response || error.message);
+      })      
       .finally(function () {
       });
   }
+  
 
 }

@@ -3,6 +3,7 @@ export default class SorView {
   constructor(index, obj, szuloElem) {
     this.#obj = obj;
     this.index = index;
+    
     this.szuloElem = szuloElem;
     this.id = this.#obj.id;
     this.htmlOsszerak();
@@ -11,31 +12,43 @@ export default class SorView {
     this.szerkesztElem = this.szuloElem.find(".szerkesztes:last");
     console.log(this.torlesElem);
     this.torlesElem.on("click", () => {
-      console.log("törlés");
-      this.trigger("sorTorles");
+      if (window.confirm("Biztosan törölni szeretnéd ezt a sort?")) {
+        console.log("törlés");
+        this.trigger("sorTorles");
+      }
     });
+    
     this.szerkesztElem.on("click", () => {
       this.trigger("sorSzerkeszt", this.#obj);
     });
     
   }
 
+  
   trigger(e) {
-    const esemenyem = new CustomEvent(e, { detail: { index: this.index} });
+    const esemenyem = new CustomEvent(e, { detail: this.#obj.id });
     window.dispatchEvent(esemenyem);
   }
+  
+  
   
 
   htmlOsszerak() {
     let txt = "<tr>";
     for (const key in this.#obj) {
-      txt += `<td>${this.#obj[key]}</td>`;
+      let value = this.#obj[key];
+      // Ha az érték objektum, ne jelenítsük meg.
+      if (typeof value === 'object') {
+        continue;
+      }
+      txt += `<td>${value}</td>`;
     }
     txt += "<td><button class='szerkesztes'> Szerkesztés </button></td>";
     txt += "<td><button class='torles'> Törlés </button></td>";
     txt += "</tr>";
     this.szuloElem.append(txt);
   }
+  
 
   
 

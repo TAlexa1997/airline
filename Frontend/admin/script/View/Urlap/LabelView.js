@@ -5,11 +5,12 @@ export default class InputView {
 
     constructor(obj, szuloElem) {
       this.#obj = obj;
-      this.szuloElem = szuloElem;
-      console.log(this.#obj);
-      this.htmlOsszerak();
-      this.submitElem = this.formElem.find("#submit");
-      this.collForm();
+    this.szuloElem = szuloElem;
+    console.log(this.#obj);
+    this.htmlOsszerak();
+    this.formElem = szuloElem.find("form"); 
+    this.submitElem = this.formElem.find("#submit");
+    this.collForm();
     }
     
     htmlOsszerak() {
@@ -52,7 +53,4 @@ export default class InputView {
       }
     });
   }
-  
-
-   
   }

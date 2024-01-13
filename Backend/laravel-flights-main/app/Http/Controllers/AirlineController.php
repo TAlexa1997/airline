@@ -60,6 +60,9 @@ class AirlineController extends Controller
      */
     public function destroy($id)
     {
-        $airline = Airline::findOrFail($id)->delete();
+
+        $airline = Airline::findOrFail($id);
+        $airline->delete();
+        return response()->json(['message' => 'Légitársaság sikeresen törölve']);
     }
 }

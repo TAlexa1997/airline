@@ -7,23 +7,24 @@ export default class Controller {
     this.dataService = new DataService();
     this.dataService.getData("airlines", this.megjelenit);
     $(window).on("sorTorles", (e) => {
-      console.log(e.detail);
+      const idToDelete = e.detail;
       this.dataService.deleteData(
-        "adatok.json",
-        e.detail,
-        this.megjelenit,
+        "airlines", 
+        idToDelete,
+        () => {
+          alert("Sor sikeresen törölve!");
+          this.dataService.getData("airlines", this.megjelenit);
+        },
         this.hibaCallback
       );
     });
-
+    
     $(window).on("sorSzerkeszt", (e) => {
       const sorIndex = e.detail;
       const szerkesztendoElem = this.dataService.getData()[sorIndex]; 
   this.dataService.setSzerkesztendoElem(szerkesztendoElem);
     });
   }
-  
-
 
   hibaCallback(err) {
     console.log(err);

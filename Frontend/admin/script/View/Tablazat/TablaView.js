@@ -22,7 +22,7 @@ export default class TablaView{
     sorMegjelenit(){
         
         this.#list.forEach((elem,index)=>{
-            new SorView(index,elem,this.szuloElem)
+            new SorView(index, elem, this.tbodyElem);
         })
     }
 
